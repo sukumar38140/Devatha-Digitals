@@ -12,7 +12,7 @@ import { Language } from "./translations";
 const navLinks = [
   { nameKey: "nav.home", href: "/" },
   { nameKey: "nav.about", href: "/about" },
-  { nameKey: "nav.products", href: "/products" },
+  { nameKey: "products", href: "/products" },
   { nameKey: "nav.brands", href: "/brands" },
   { nameKey: "nav.services", href: "/services" },
   { nameKey: "nav.gallery", href: "/gallery" },

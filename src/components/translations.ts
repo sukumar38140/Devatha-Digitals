@@ -4,6 +4,7 @@ export interface TranslationDictionary {
   nav: {
     home: string;
     about: string;
+    products: string;
     brands: string;
     services: string;
     gallery: string;
@@ -174,6 +175,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "Home",
       about: "About Us",
+      products: "Products",
       brands: "Brands",
       services: "Services",
       gallery: "Gallery",
@@ -342,6 +344,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "హోమ్",
       about: "మా గురించి",
+      products: "ఉற்பత్తులు",
       brands: "బ్రాండ్లు",
       services: "సేవలు",
       gallery: "గ్యాలరీ",
@@ -510,6 +513,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "होम",
       about: "हमारे बारे में",
+      products: "उत्पाद",
       brands: "ब्रांड्स",
       services: "सेवाएं",
       gallery: "गैलरी",
@@ -678,6 +682,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "முகப்பு",
       about: "எங்களைப் பற்றி",
+      products: "தயாரிப்புகள்",
       brands: "பிராண்டுகள்",
       services: "சேவைகள்",
       gallery: "கேலரி",
@@ -846,6 +851,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "ಮುಖಪುಟ",
       about: "ನಮ್ಮ ಬಗ್ಗೆ",
+      products: "ಉತ್ಪನ್ನಗಳು",
       brands: "ಬ್ರ್ಯಾಂಡ್‌ಗಳು",
       services: "ಸೇವೆಗಳು",
       gallery: "ಗ್ಯಾಲರಿ",
@@ -1014,6 +1020,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "ഹോം",
       about: "ഞങ്ങളെക്കുറിച്ച്",
+      products: "ഉൽപ്പന്നങ്ങൾ",
       brands: "ബ്രാൻഡുകൾ",
       services: "സേവനങ്ങൾ",
       gallery: "ഗാലറി",
@@ -1182,6 +1189,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "होम",
       about: "आमच्याबद्दल",
+      products: "उत्पादने",
       brands: "ब्रँड्स",
       services: "सेवा",
       gallery: "गॅलरी",
@@ -1350,6 +1358,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "હોમ",
       about: "અમારા વિશે",
+      products: "ઉત્પાદનો",
       brands: "બ્રાન્ડ્સ",
       services: "સેવાઓ",
       gallery: "ગેલેરી",
@@ -1518,6 +1527,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "হোম",
       about: "আমাদের সম্পর্কে",
+      products: "পণ্যসমূহ",
       brands: "ব্র্যান্ড",
       services: "পরিষেবা",
       gallery: "গ্যালারি",
@@ -1686,6 +1696,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "ਹੋਮ",
       about: "ਸਾਡੇ ਬਾਰੇ",
+      products: "ਉਤਪਾਦ",
       brands: "ਬ੍ਰਾਂਡ",
       services: "ਸੇਵਾਵਾਂ",
       gallery: "ਗੈਲਰੀ",
@@ -1854,6 +1865,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     nav: {
       home: "ہوم",
       about: "ہمارے بارے میں",
+      products: "مصنوعات",
       brands: "برانڈز",
       services: "خدمات",
       gallery: "گیلری",

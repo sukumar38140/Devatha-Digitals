@@ -31,12 +31,21 @@ export function LanguageProvider({
 
     for (const part of parts) {
       if (current == null || typeof current !== "object") {
-        return path;
+        break;
       }
       current = current[part];
     }
 
-    return typeof current === "string" ? current : path;
+    if (typeof current === "string") {
+      return current;
+    }
+
+    // Fallback: If the lookup is not a string (e.g. "products" is a page object), check if it exists in the 'nav' section directly
+    if (dictionary.nav && typeof (dictionary.nav as any)[path] === "string") {
+      return (dictionary.nav as any)[path];
+    }
+
+    return path;
   };
 
   const changeLocale = (newLocale: Language) => {
