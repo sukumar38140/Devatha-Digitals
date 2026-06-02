@@ -97,7 +97,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href={`/${locale}`} className="flex items-center gap-3 group">
+            <Link href={`/${locale}`} className="flex items-center gap-3 group shrink-0">
               <Image
                 src="/images/logo.png"
                 alt="Devatha Digitals HD Logo"
@@ -105,7 +105,7 @@ export default function Navbar() {
                 height={40}
                 className="h-10 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="flex flex-col">
+              <div className="hidden xl:flex flex-col">
                 <span className="font-bold text-xl text-text-primary tracking-tight font-poppins">
                   DEVATHA <span className="text-primary">DIGITALS</span>
                 </span>
@@ -116,12 +116,12 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-6">
+            <nav className="hidden lg:flex items-center lg:gap-3 xl:gap-5">
               {navLinks.map((link) => (
                 <a
                   key={link.nameKey}
                   href={`/${locale}${link.href === "/" ? "" : link.href}`}
-                  className="text-xs xl:text-sm font-semibold text-text-secondary hover:text-primary transition-colors duration-200 relative group py-2"
+                  className="text-[11px] xl:text-sm font-bold text-text-secondary hover:text-primary transition-colors duration-200 relative group py-2"
                 >
                   {t(link.nameKey)}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -130,15 +130,16 @@ export default function Navbar() {
             </nav>
 
             {/* Right Side Actions (Desktop) */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center lg:gap-2 xl:gap-4 shrink-0">
               {/* Language Selector Dropdown */}
               <div className="relative" ref={langRef}>
                 <button
                   onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-                  className="flex items-center gap-1.5 px-3 py-2 border border-border-custom rounded-xl text-xs font-bold text-text-secondary hover:text-primary hover:border-primary/30 transition-all bg-white dark:bg-slate-800 cursor-pointer"
+                  className="flex items-center gap-1.5 px-2.5 py-2 border border-border-custom rounded-xl text-xs font-bold text-text-secondary hover:text-primary hover:border-primary/30 transition-all bg-white dark:bg-slate-800 cursor-pointer"
+                  title="Change Language"
                 >
                   <Globe className="h-3.5 w-3.5" />
-                  <span>{currentLanguageName}</span>
+                  <span className="hidden xl:inline">{currentLanguageName}</span>
                   <ChevronDown className={`h-3 w-3 transition-transform ${isLangDropdownOpen ? "rotate-180" : ""}`} />
                 </button>
 
@@ -173,10 +174,11 @@ export default function Navbar() {
               <div className="relative" ref={themeRef}>
                 <button
                   onClick={() => setIsThemeDropdownOpen(!isThemeDropdownOpen)}
-                  className="flex items-center gap-1.5 px-3 py-2 border border-border-custom rounded-xl text-xs font-bold text-text-secondary hover:text-primary hover:border-primary/30 transition-all bg-white dark:bg-slate-800 cursor-pointer"
+                  className="flex items-center gap-1.5 px-2.5 py-2 border border-border-custom rounded-xl text-xs font-bold text-text-secondary hover:text-primary hover:border-primary/30 transition-all bg-white dark:bg-slate-800 cursor-pointer"
+                  title="Change Theme"
                 >
                   <Palette className="h-3.5 w-3.5" />
-                  <span>{currentThemeName}</span>
+                  <span className="hidden xl:inline">{currentThemeName}</span>
                   <ChevronDown className={`h-3 w-3 transition-transform ${isThemeDropdownOpen ? "rotate-180" : ""}`} />
                 </button>
 
@@ -210,10 +212,11 @@ export default function Navbar() {
               {/* Phone Call CTA */}
               <a
                 href="tel:+919948020830"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold hover:bg-accent transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0"
+                className="flex items-center gap-2 lg:px-2.5 xl:px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold hover:bg-accent transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+                title={t("nav.callStore")}
               >
                 <Phone className="h-3.5 w-3.5" />
-                <span>{t("nav.callStore")}</span>
+                <span className="hidden xl:inline">{t("nav.callStore")}</span>
               </a>
             </div>
 
