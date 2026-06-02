@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-primary: #F58220;
+  --color-accent: #FF9A2F;
+  --color-brand-bg: #FFFFFF;
+  --color-brand-alt-bg: #FFF8F2;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #555555;
+  --color-border-custom: #ECECEC;
+  
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --animate-marquee: marquee 30s linear infinite;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 }
 
+:root {
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom premium design system utilities */
+.text-shadow-premium {
+  text-shadow: 0 4px 12px rgba(245, 130, 32, 0.08);
+}
+
+.shadow-premium {
+  box-shadow: 0 10px 35px -5px rgba(245, 130, 32, 0.05), 0 2px 8px -2px rgba(0, 0, 0, 0.02);
+}
+
+.shadow-premium-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.shadow-premium-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -12px rgba(245, 130, 32, 0.12), 0 4px 12px -4px rgba(0, 0, 0, 0.03);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
