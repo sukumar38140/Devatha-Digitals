@@ -2,10 +2,43 @@
 
 import React from "react";
 import { MapPin, Phone, MessageSquare, Compass, Clock } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Location() {
+  const { t, locale } = useLanguage();
   const mapQueryUrl = "https://maps.google.com/maps?q=Devatha%20Digitals,%20CTM%20Road,%20Madanapalle&t=&z=16&ie=UTF8&iwloc=&output=embed";
   const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Devatha+Digitals,+CTM+Road,+Madanapalle";
+
+  const getWhatsappLocationText = (loc: string) => {
+    switch (loc) {
+      case "te":
+        return "నమస్కారం దేవత డిజిటల్స్, నేను మీ ఉత్పత్తులు మరియు సేవల గురించి తెలుసుకోవాలనుకుంటున్నాను.";
+      case "hi":
+        return "नमस्ते देवता डिजिटल्स, मैं आपके उत्पादों और सेवाओं के बारे में पूछताछ करना चाहता हूँ।";
+      case "ta":
+        return "வணக்கம் தேவதா டிஜிட்டல்ஸ், நான் உங்கள் தயாரிப்புகள் மற்றும் சேவைகளைப் பற்றி விசாரிக்க விரும்புகிறேன்.";
+      case "kn":
+        return "ನಮಸ್ಕಾರ ದೇವತಾ ಡಿಜಿಟಲ್ಸ್, ನಾನು ನಿಮ್ಮ ಉತ್ಪನ್ನಗಳು ಮತ್ತು ಸೇವೆಗಳ ಬಗ್ಗೆ ವಿಚಾರಿಸಲು ಬಯಸುತ್ತೇನೆ.";
+      case "ml":
+        return "ഹലോ ദേവത ഡിജിറ്റൽസ്, നിങ്ങളുടെ ഉൽപ്പന്നങ്ങളെയും സേവനങ്ങളെയും കുറിച്ച് ചോദിച്ചറിയാൻ ഞാൻ ആഗ്രഹിക്കുന്നു.";
+      case "mr":
+        return "नमस्कार देवता डिजिटल्स, मी आपल्या उत्पादनांविषयी आणि सेवांविषयी चौकशी करू इच्छितो.";
+      case "gu":
+        return "નમસ્તે દેવતા ડિજિટલ્સ, હું તમારા ઉત્પાદનો અને સેવાઓ વિશે પૂછપરછ કરવા માંગું છું.";
+      case "bn":
+        return "হ্যালো দেবতাদিজিটালস, আমি আপনার পণ্য ও সেবা সম্পর্কে অনুসন্ধান করতে চাই।";
+      case "pa":
+        return "ਨਮਸਤੇ ਦੇਵਤਾ ਡਿਜੀਟਲਸ, ਮੈਂ ਤੁਹਾਡੇ ਉਤਪਾਦਾਂ ਅਤੇ ਸੇਵਾਵਾਂ ਬਾਰੇ ਪੁੱਛਗਿੱਛ ਕਰਨਾ ਚਾਹੁੰਦਾ ਹਾਂ।";
+      case "ur":
+        return "ہیلو دیوتا ڈیجیٹلز، میں آپ کی مصنوعات اور خدمات کے بارے میں پوچھ گچھ کرنا چاہتا ہوں۔";
+      default:
+        return "Hi Devatha Digitals, I would like to inquire about your products and services.";
+    }
+  };
+
+  const addressParts = t("contact.addressText").split(", ");
+  const hoursTextVal = t("contact.hoursText");
+  const hoursParts = hoursTextVal.includes(" | ") ? hoursTextVal.split(" | ") : [hoursTextVal, ""];
 
   return (
     <section id="location" className="py-24 bg-brand-bg relative">
@@ -14,14 +47,13 @@ export default function Location() {
         {/* Header */}
         <div className="text-center flex flex-col items-center gap-3 mb-16">
           <span className="text-sm font-bold text-primary tracking-wider uppercase">
-            Store Location
+            {t("contact.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight">
-            Visit Our <span className="text-primary">Showroom Today</span>
+            {t("contact.titleStart")}<span className="text-primary">{t("contact.titleAccent")}</span>{t("contact.titleEnd")}
           </h2>
           <p className="text-sm text-text-secondary max-w-xl font-medium mt-1">
-            We are conveniently located in the commercial heart of Madanapalle. Walk in 
-            to check out the latest deals in person.
+            {t("contact.desc")}
           </p>
         </div>
 
@@ -33,7 +65,7 @@ export default function Location() {
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-primary tracking-widest uppercase">
-                  Showroom Address
+                  {t("contact.addressTitle")}
                 </span>
               </div>
               
@@ -46,9 +78,12 @@ export default function Location() {
                     Devatha Digitals
                   </h4>
                   <p className="text-sm text-text-secondary leading-relaxed font-medium mt-1.5">
-                    Above HDFC Bank,<br />
-                    CTM Road, Madanapalle,<br />
-                    Andhra Pradesh - 517325
+                    {addressParts.map((part, index) => (
+                      <span key={index}>
+                        {part}
+                        {index < addressParts.length - 1 && <br />}
+                      </span>
+                    ))}
                   </p>
                 </div>
               </div>
@@ -59,11 +94,11 @@ export default function Location() {
                 </div>
                 <div>
                   <h4 className="font-extrabold text-base text-text-primary">
-                    Business Hours
+                    {t("contact.hoursTitle")}
                   </h4>
                   <p className="text-sm text-text-secondary leading-relaxed font-medium mt-1">
-                    10:00 AM – 09:00 PM<br />
-                    Open All 7 Days a Week
+                    {hoursParts[0]}
+                    {hoursParts[1] && <><br />{hoursParts[1]}</>}
                   </p>
                 </div>
               </div>
@@ -78,7 +113,7 @@ export default function Location() {
                 className="flex items-center justify-center gap-2.5 w-full py-3.5 bg-primary text-white font-bold rounded-2xl hover:bg-accent transition-all duration-300 shadow-md hover:shadow-lg"
               >
                 <Compass className="h-5 w-5" />
-                <span>Get Directions</span>
+                <span>{t("contact.btnDirections")}</span>
               </a>
 
               <div className="grid grid-cols-2 gap-3">
@@ -87,16 +122,16 @@ export default function Location() {
                   className="flex items-center justify-center gap-2 py-3 border-2 border-primary/20 bg-white text-primary font-bold rounded-2xl hover:bg-brand-alt-bg transition-all duration-300"
                 >
                   <Phone className="h-4.5 w-4.5" />
-                  <span>Call Store</span>
+                  <span>{t("contact.btnCall")}</span>
                 </a>
                 <a
-                  href="https://wa.me/919948020830?text=Hi%20Devatha%20Digitals,%20I%20would%20like%20to%20inquire%20about%20your%20products%20and%20services."
+                  href={`https://wa.me/919948020830?text=${encodeURIComponent(getWhatsappLocationText(locale))}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 border-2 border-emerald-500/20 bg-white text-emerald-600 font-bold rounded-2xl hover:bg-emerald-50/50 transition-all duration-300"
                 >
                   <MessageSquare className="h-4.5 w-4.5" />
-                  <span>WhatsApp</span>
+                  <span>{t("contact.btnWhatsapp")}</span>
                 </a>
               </div>
             </div>

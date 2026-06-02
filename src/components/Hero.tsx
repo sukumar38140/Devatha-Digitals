@@ -4,8 +4,10 @@ import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { Phone, MapPin, CheckCircle, Smartphone, Tv, Laptop, ShieldCheck } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Hero() {
+  const { t } = useLanguage();
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -90,26 +92,24 @@ export default function Hero() {
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 self-start bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full">
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
               <span className="text-xs font-bold text-primary tracking-wider uppercase">
-                Trusted Since 2005
+                {t("hero.badge")}
               </span>
             </motion.div>
 
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-text-primary tracking-tight leading-[1.1] text-shadow-premium"
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-text-primary tracking-tight leading-[1.1] text-shadow-premium"
             >
-              21+ Years of <br />
-              <span className="text-primary">Trusted Electronics</span> Excellence
+              {t("hero.titleStart")} <span className="text-primary">{t("hero.titleAccent")}</span>{t("hero.titleEnd")}
             </motion.h1>
 
             {/* Subheading */}
             <motion.p
               variants={itemVariants}
-              className="text-lg text-text-secondary leading-relaxed max-w-xl font-medium"
+              className="text-sm text-text-secondary leading-relaxed max-w-xl font-medium"
             >
-              Your One-Stop Destination for Mobile Phones, Smart TVs, Air Conditioners, 
-              Refrigerators, Washing Machines, and premium electronic solutions in Madanapalle.
+              {t("hero.subtitle")}
             </motion.p>
 
             {/* CTAs */}
@@ -122,14 +122,14 @@ export default function Hero() {
                 className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary text-white font-bold hover:bg-accent transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 <Phone className="h-5 w-5" />
-                <span>Call Now</span>
+                <span>{t("nav.callStore")}</span>
               </a>
               <a
                 href="#contact"
-                className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border-2 border-primary/20 text-primary font-bold hover:bg-brand-alt-bg transition-all duration-300 transform hover:-translate-y-0.5"
+                className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-primary/20 text-primary font-bold hover:bg-brand-alt-bg transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 <MapPin className="h-5 w-5" />
-                <span>Visit Store</span>
+                <span>{t("nav.contact")}</span>
               </a>
             </motion.div>
 
@@ -139,10 +139,10 @@ export default function Hero() {
               className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-border-custom"
             >
               {[
-                "Since 2005",
-                "Genuine Products",
-                "Same Day Delivery",
-                "Trusted by Thousands",
+                t("whyChooseUs.r1Title"),
+                t("whyChooseUs.r2Title"),
+                t("whyChooseUs.r4Title"),
+                t("whyChooseUs.r6Title"),
               ].map((trust) => (
                 <div key={trust} className="flex items-center gap-2">
                   <CheckCircle className="h-4.5 w-4.5 text-primary shrink-0" />
@@ -181,27 +181,27 @@ export default function Hero() {
                 </div>
 
                 {/* Overlaid Badges */}
-                <div className="absolute -bottom-4 -left-4 bg-white px-5 py-3 rounded-2xl shadow-lg border border-border-custom/60 flex items-center gap-3">
+                <div className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 px-5 py-3 rounded-2xl shadow-lg border border-border-custom/60 flex items-center gap-3">
                   <div className="bg-primary/10 p-2.5 rounded-xl text-primary">
                     <ShieldCheck className="h-6 w-6" />
                   </div>
                   <div>
                     <h4 className="text-sm font-extrabold text-text-primary leading-none">
-                      Authorized Dealer
+                      {t("brands.badge")}
                     </h4>
                     <p className="text-[10px] text-text-secondary font-bold mt-1 uppercase">
-                      All Top Brands
+                      {t("about.brandsLabel")}
                     </p>
                   </div>
                 </div>
 
-                <div className="absolute -top-4 -right-4 bg-white px-5 py-3 rounded-2xl shadow-lg border border-border-custom/60 flex items-center gap-3">
+                <div className="absolute -top-4 -right-4 bg-white dark:bg-slate-800 px-5 py-3 rounded-2xl shadow-lg border border-border-custom/60 flex items-center gap-3">
                   <div>
                     <h4 className="text-sm font-extrabold text-primary leading-none">
-                      4.4 ★
+                      {t("hero.statRating")}
                     </h4>
                     <p className="text-[10px] text-text-secondary font-bold mt-1 uppercase">
-                      600+ Reviews
+                      {t("about.reviews")}+ {t("about.reviewsLabel")}
                     </p>
                   </div>
                 </div>

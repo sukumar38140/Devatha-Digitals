@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ShoppingBag } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
 
 const brands = [
   { name: "Samsung", logoText: "SAMSUNG", fontStyle: "font-sans tracking-widest font-black text-blue-900" },
@@ -153,32 +154,33 @@ const brandDetailsList = [
 ];
 
 export default function Brands({ detailed = false }: { detailed?: boolean }) {
+  const { t } = useLanguage();
   // Duplicate list to create a seamless marquee loop
   const marqueeItems = [...brands, ...brands];
 
   return (
-    <section id="brands" className={`py-16 bg-white ${detailed ? "" : "border-y border-border-custom"} overflow-hidden`}>
+    <section id="brands" className={`py-16 bg-white dark:bg-slate-900 ${detailed ? "" : "border-y border-border-custom"} overflow-hidden`}>
       {/* Heading Block */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
         <span className="text-xs font-bold text-primary tracking-widest uppercase">
-          Authorized Showroom Partner
+          {t("brands.badge")}
         </span>
         <h3 className="text-xl font-extrabold text-text-primary tracking-tight mt-1">
-          Top-Tier Brands Under One Roof
+          {t("brands.titleStart")}<span className="text-primary">{t("brands.titleAccent")}</span>{t("brands.titleEnd")}
         </h3>
       </div>
 
       {/* Marquee Wrapper */}
       <div className="relative w-full overflow-hidden py-4 select-none">
         {/* Soft fading edges for premium look */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white dark:from-slate-900 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10 pointer-events-none" />
 
         <div className="animate-marquee whitespace-nowrap inline-flex gap-8 items-center">
           {marqueeItems.map((brand, index) => (
             <div
               key={index}
-              className="inline-flex items-center justify-center min-w-[160px] h-20 bg-brand-alt-bg/30 px-6 rounded-2xl border border-border-custom/50 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 bg-white cursor-pointer"
+              className="inline-flex items-center justify-center min-w-[160px] h-20 bg-brand-alt-bg/30 px-6 rounded-2xl border border-border-custom/50 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 bg-white dark:bg-slate-800 cursor-pointer"
             >
               <span className={`text-base select-none ${brand.fontStyle}`}>
                 {brand.logoText}
@@ -196,14 +198,13 @@ export default function Brands({ detailed = false }: { detailed?: boolean }) {
           <div className="text-center flex flex-col items-center gap-3 mb-16">
             <div className="inline-flex items-center gap-1 text-primary">
               <ShoppingBag className="h-4.5 w-4.5" />
-              <span className="text-xs font-bold tracking-widest uppercase">Brand Curations</span>
+              <span className="text-xs font-bold tracking-widest uppercase">{t("brands.secTagline")}</span>
             </div>
             <h2 className="text-3xl font-extrabold text-text-primary tracking-tight">
-              Our Authorized <span className="text-primary">Product Lines</span>
+              {t("brands.secTitleStart")}<span className="text-primary">{t("brands.secTitleAccent")}</span>{t("brands.secTitleEnd")}
             </h2>
             <p className="text-sm text-text-secondary max-w-2xl font-medium mt-1">
-              Browse through the specific premium appliances and smartphones we supply in 
-              partnership with each authorized manufacturer.
+              {t("brands.secDesc")}
             </p>
           </div>
 
@@ -228,7 +229,7 @@ export default function Brands({ detailed = false }: { detailed?: boolean }) {
 
                   {/* Products Under Brand (Line-by-Line List) */}
                   <div className="flex flex-col gap-2 border-t border-border-custom/50 pt-4">
-                    <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Featured Products:</span>
+                    <span className="text-[10px] font-bold text-primary uppercase tracking-widest">{t("brands.featured")}</span>
                     <ul className="flex flex-col gap-1.5 pl-1">
                       {brand.products.map((item, idx) => (
                         <li key={idx} className="text-xs font-semibold text-text-primary leading-tight list-none flex items-start gap-1.5">

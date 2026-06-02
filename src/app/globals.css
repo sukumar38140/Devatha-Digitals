@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #F58220;
-  --color-accent: #FF9A2F;
-  --color-brand-bg: #FFFFFF;
-  --color-brand-alt-bg: #FFF8F2;
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #555555;
-  --color-border-custom: #ECECEC;
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-alt-bg: var(--brand-alt-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-custom: var(--border-custom);
   
-  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-sans: var(--font-sans-current), var(--font-poppins), system-ui, sans-serif;
 
   --animate-marquee: marquee 30s linear infinite;
 
@@ -20,26 +20,82 @@
 }
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #1A1A1A;
+  --background: var(--brand-bg);
+  --foreground: var(--text-primary);
 }
 
+/* 1. ORANGE THEME (DEFAULT) */
+:root, .theme-orange {
+  --primary: #F58220;
+  --accent: #FF9A2F;
+  --brand-bg: #FFFFFF;
+  --brand-alt-bg: #FFF8F2;
+  --text-primary: #1A1A1A;
+  --text-secondary: #555555;
+  --border-custom: #ECECEC;
+  --text-shadow-val: 0 4px 12px rgba(245, 130, 32, 0.08);
+  --shadow-premium-val: 0 10px 35px -5px rgba(245, 130, 32, 0.05), 0 2px 8px -2px rgba(0, 0, 0, 0.02);
+  --shadow-premium-hover-val: 0 24px 50px -12px rgba(245, 130, 32, 0.12), 0 4px 12px -4px rgba(0, 0, 0, 0.03);
+}
+
+/* 2. BLUE THEME */
+.theme-blue {
+  --primary: #1E5EFF;
+  --accent: #4A7BFF;
+  --brand-bg: #FFFFFF;
+  --brand-alt-bg: #F5F8FF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #555555;
+  --border-custom: #E2E8F0;
+  --text-shadow-val: 0 4px 12px rgba(30, 94, 255, 0.08);
+  --shadow-premium-val: 0 10px 35px -5px rgba(30, 94, 255, 0.05), 0 2px 8px -2px rgba(0, 0, 0, 0.02);
+  --shadow-premium-hover-val: 0 24px 50px -12px rgba(30, 94, 255, 0.12), 0 4px 12px -4px rgba(0, 0, 0, 0.03);
+}
+
+/* 3. PREMIUM DARK THEME */
+.theme-dark, .dark {
+  --primary: #F58220; /* Keep highlight text/elements orange for branding consistency */
+  --accent: #111827;  /* Accent container background as requested (#111827) */
+  --brand-bg: #0F172A;
+  --brand-alt-bg: #1E293B;
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --border-custom: #334155;
+  --text-shadow-val: 0 4px 12px rgba(245, 130, 32, 0.15);
+  --shadow-premium-val: 0 10px 35px -5px rgba(0, 0, 0, 0.35), 0 2px 8px -2px rgba(0, 0, 0, 0.1);
+  --shadow-premium-hover-val: 0 24px 50px -12px rgba(0, 0, 0, 0.5), 0 4px 12px -4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dynamic CSS font mapping based on active HTML lang tag */
+html[lang="en"] { --font-sans-current: var(--font-poppins); }
+html[lang="te"] { --font-sans-current: var(--font-telugu); }
+html[lang="hi"] { --font-sans-current: var(--font-devanagari); }
+html[lang="mr"] { --font-sans-current: var(--font-devanagari); }
+html[lang="ta"] { --font-sans-current: var(--font-tamil); }
+html[lang="kn"] { --font-sans-current: var(--font-kannada); }
+html[lang="ml"] { --font-sans-current: var(--font-malayalam); }
+html[lang="gu"] { --font-sans-current: var(--font-gujarati); }
+html[lang="bn"] { --font-sans-current: var(--font-bengali); }
+html[lang="pa"] { --font-sans-current: var(--font-gurmukhi); }
+html[lang="ur"] { --font-sans-current: var(--font-urdu); }
+
 body {
-  background-color: #FFFFFF;
-  color: #1A1A1A;
+  background-color: var(--brand-bg);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Custom premium design system utilities */
+/* Custom premium design system utilities mapped to variables */
 .text-shadow-premium {
-  text-shadow: 0 4px 12px rgba(245, 130, 32, 0.08);
+  text-shadow: var(--text-shadow-val);
 }
 
 .shadow-premium {
-  box-shadow: 0 10px 35px -5px rgba(245, 130, 32, 0.05), 0 2px 8px -2px rgba(0, 0, 0, 0.02);
+  box-shadow: var(--shadow-premium-val);
 }
 
 .shadow-premium-hover {
@@ -47,7 +103,7 @@ body {
 }
 .shadow-premium-hover:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 50px -12px rgba(245, 130, 32, 0.12), 0 4px 12px -4px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-premium-hover-val);
 }
 
 .no-scrollbar::-webkit-scrollbar {

@@ -10,41 +10,44 @@ import {
   HeartHandshake, 
   UserCheck 
 } from "lucide-react";
-
-const reasons = [
-  {
-    title: "Trusted Since 2005",
-    icon: Award,
-    desc: "Over 21 years of delivering premium customer service and electronic reliability in Madanapalle.",
-  },
-  {
-    title: "100% Genuine Products",
-    icon: ShieldCheck,
-    desc: "All our electronics are sourced directly from official brand partners with full warranty coverage.",
-  },
-  {
-    title: "Best Price Guarantee",
-    icon: Tag,
-    desc: "Get competitive retail rates and exciting seasonal discounts on top home appliances.",
-  },
-  {
-    title: "Same Day Delivery",
-    icon: Truck,
-    desc: "Fast and reliable shipping directly to your doorstep in and around Madanapalle.",
-  },
-  {
-    title: "Excellent After-Sales Support",
-    icon: HeartHandshake,
-    desc: "Dedicated post-purchase query support, product installation assistance, and maintenance guidance.",
-  },
-  {
-    title: "Expert Assistance",
-    icon: UserCheck,
-    desc: "Get personalized tech advice from our store staff to choose the perfect appliance for your home.",
-  },
-];
+import { useLanguage } from "./LanguageProvider";
 
 export default function WhyChooseUs() {
+  const { t } = useLanguage();
+
+  const localizedReasons = [
+    {
+      title: t("whyChooseUs.r1Title"),
+      icon: Award,
+      desc: t("whyChooseUs.r1Desc"),
+    },
+    {
+      title: t("whyChooseUs.r2Title"),
+      icon: ShieldCheck,
+      desc: t("whyChooseUs.r2Desc"),
+    },
+    {
+      title: t("whyChooseUs.r3Title"),
+      icon: Tag,
+      desc: t("whyChooseUs.r3Desc"),
+    },
+    {
+      title: t("whyChooseUs.r4Title"),
+      icon: Truck,
+      desc: t("whyChooseUs.r4Desc"),
+    },
+    {
+      title: t("whyChooseUs.r5Title"),
+      icon: HeartHandshake,
+      desc: t("whyChooseUs.r5Desc"),
+    },
+    {
+      title: t("whyChooseUs.r6Title"),
+      icon: UserCheck,
+      desc: t("whyChooseUs.r6Desc"),
+    },
+  ];
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -69,14 +72,13 @@ export default function WhyChooseUs() {
         {/* Header */}
         <div className="text-center flex flex-col items-center gap-3 mb-16">
           <span className="text-sm font-bold text-primary tracking-wider uppercase">
-            Why Choose Us
+            {t("whyChooseUs.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight">
-            Our Commitment to <span className="text-primary">Your Experience</span>
+            {t("whyChooseUs.titleStart")}<span className="text-primary">{t("whyChooseUs.titleAccent")}</span>{t("whyChooseUs.titleEnd")}
           </h2>
           <p className="text-sm text-text-secondary max-w-xl font-medium mt-1">
-            Discover why generations of families in Madanapalle trust Devatha Digitals for 
-            their electronic purchases.
+            {t("whyChooseUs.desc")}
           </p>
         </div>
 
@@ -88,7 +90,7 @@ export default function WhyChooseUs() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {reasons.map((reason, idx) => {
+          {localizedReasons.map((reason, idx) => {
             const Icon = reason.icon;
             return (
               <motion.div

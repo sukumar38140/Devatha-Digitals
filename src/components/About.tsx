@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView, Variants } from "framer-motion";
 import { Award, Heart, CheckSquare, Star } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
 
 function Counter({ value, duration = 1.5 }: { value: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -35,6 +36,7 @@ function Counter({ value, duration = 1.5 }: { value: number; duration?: number }
 }
 
 export default function About() {
+  const { t } = useLanguage();
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -90,25 +92,20 @@ export default function About() {
           <motion.div className="lg:col-span-7 flex flex-col gap-6" variants={itemVariants}>
             <div className="flex flex-col gap-2">
               <span className="text-sm font-bold text-primary tracking-wider uppercase">
-                Established 2005
+                {t("about.badge")}
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight">
-                Our Story: Two Decades of <br />
-                <span className="text-primary">Reliable service</span> & Trust
+                {t("about.titleStart")}<br />
+                <span className="text-primary">{t("about.titleAccent")}</span> {t("about.titleEnd")}
               </h2>
             </div>
 
-            <p className="text-base text-text-secondary leading-relaxed font-medium">
-              Devatha Digitals has been serving customers since 2005 and has become one of the most trusted 
-              electronics showrooms in Madanapalle. Known for quality products, reliable service, and 
-              unwavering customer satisfaction, the business continues to provide the latest electronics 
-              from leading global brands.
+            <p className="text-sm text-text-secondary leading-relaxed font-medium">
+              {t("about.desc1")}
             </p>
 
-            <p className="text-base text-text-secondary leading-relaxed font-medium">
-              Under the leadership of D Babu, we have built a reputation based on trust, transparent pricing, 
-              and dedicated after-sales support. We don&apos;t just sell appliances; we deliver solutions 
-              that elevate your everyday living.
+            <p className="text-sm text-text-secondary leading-relaxed font-medium">
+              {t("about.desc2")}
             </p>
 
             {/* Counters Grid */}
@@ -120,11 +117,11 @@ export default function About() {
                     <Award className="h-5 w-5" />
                   </div>
                   <span className="text-2xl sm:text-3xl font-extrabold text-text-primary">
-                    <Counter value={21} />+
+                    <Counter value={parseInt(t("about.years")) || 21} />+
                   </span>
                 </div>
                 <span className="text-xs font-bold text-text-secondary uppercase tracking-wider">
-                  Years of Experience
+                  {t("about.yearsLabel")}
                 </span>
               </div>
 
@@ -135,11 +132,11 @@ export default function About() {
                     <Star className="h-5 w-5" />
                   </div>
                   <span className="text-2xl sm:text-3xl font-extrabold text-text-primary">
-                    <Counter value={600} />+
+                    <Counter value={parseInt(t("about.reviews")) || 600} />+
                   </span>
                 </div>
                 <span className="text-xs font-bold text-text-secondary uppercase tracking-wider">
-                  Customer Reviews
+                  {t("about.reviewsLabel")}
                 </span>
               </div>
 
@@ -150,11 +147,11 @@ export default function About() {
                     <Heart className="h-5 w-5" />
                   </div>
                   <span className="text-2xl sm:text-3xl font-extrabold text-text-primary">
-                    <Counter value={10000} />+
+                    <Counter value={parseInt(t("about.customers").replace(/[^0-9]/g, "")) || 10000} />+
                   </span>
                 </div>
                 <span className="text-xs font-bold text-text-secondary uppercase tracking-wider">
-                  Happy Customers
+                  {t("about.customersLabel")}
                 </span>
               </div>
 
@@ -165,11 +162,11 @@ export default function About() {
                     <CheckSquare className="h-5 w-5" />
                   </div>
                   <span className="text-2xl sm:text-3xl font-extrabold text-text-primary">
-                    <Counter value={15} />+
+                    <Counter value={parseInt(t("about.brands")) || 15} />+
                   </span>
                 </div>
                 <span className="text-xs font-bold text-text-secondary uppercase tracking-wider">
-                  Multiple Top Brands
+                  {t("about.brandsLabel")}
                 </span>
               </div>
             </div>
