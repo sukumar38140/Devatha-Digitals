@@ -105,7 +105,7 @@ export default function Navbar() {
                 height={40}
                 className="h-10 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="hidden xl:flex flex-col">
+              <div className="flex flex-col">
                 <span className="font-bold text-xl text-text-primary tracking-tight font-poppins">
                   DEVATHA <span className="text-primary">DIGITALS</span>
                 </span>
