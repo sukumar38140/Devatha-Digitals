@@ -90,7 +90,7 @@ export default function Location() {
                   <span>Call Store</span>
                 </a>
                 <a
-                  href="https://wa.me/919948020830?text=Hi%20Devatha%20Digitals,%20I%20am%20interested%20in%20learning%20more%20about%20your%20electronic%20appliances."
+                  href="https://wa.me/919948020830?text=Hi%20Devatha%20Digitals,%20I%20would%20like%20to%20inquire%20about%20your%20products%20and%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 border-2 border-emerald-500/20 bg-white text-emerald-600 font-bold rounded-2xl hover:bg-emerald-50/50 transition-all duration-300"

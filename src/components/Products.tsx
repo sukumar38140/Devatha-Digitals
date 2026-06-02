@@ -480,23 +480,15 @@ export default function Products({ hideShowcase = false }: { hideShowcase?: bool
                     {/* Action Button */}
                     <div className="p-5 pt-0 mt-auto">
                       <a
-                        href="/contact"
-                        onClick={() => {
-                          if (typeof window !== "undefined") {
-                            const valueMap: Record<string, string> = {
-                              "Smartphones": "Smartphones",
-                              "Smart TVs": "Smart TVs",
-                              "Air Conditioners": "Air Conditioners",
-                              "Refrigerators": "Refrigerators",
-                              "Washing Machines": "Washing Machines",
-                              "Water Purifiers": "Water Purifiers",
-                              "Laptops": "Laptops",
-                              "Electronic Accessories": "Accessories"
-                            };
-                            window.sessionStorage.setItem("inquiry_interest", valueMap[prod.category] || "");
-                            window.sessionStorage.setItem("inquiry_message", `Hi Devatha Digitals, I am interested in purchasing the "${prod.name}" (${prod.specs}). Please let me know the availability and best price.`);
-                          }
-                        }}
+                        href={`https://wa.me/919948020830?text=${encodeURIComponent(
+                          `Hi Devatha Digitals, I am interested in purchasing:\n\n` +
+                          `*Product:* ${prod.name}\n` +
+                          `*Specs:* ${prod.specs}\n` +
+                          `*Category:* ${prod.category}\n\n` +
+                          `Please let me know the availability and best price.`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center justify-center gap-1.5 w-full py-2.5 bg-brand-alt-bg group-hover:bg-primary text-text-primary group-hover:text-white text-xs font-bold rounded-xl transition-all duration-300 border border-border-custom group-hover:border-primary cursor-pointer"
                       >
                         <ShoppingBag className="h-3.5 w-3.5" />
